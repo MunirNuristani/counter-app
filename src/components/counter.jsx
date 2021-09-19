@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+ 
     render() { 
         return (
         <div className="row">
@@ -27,6 +28,9 @@ class Counter extends Component {
                     className="btn btn-danger btn-sm">
                         X
                 </button>
+                <div>
+                    <p>History : {this.props.counter.values}</p> 
+                    </div>
             </div>
         </div>
         );
@@ -42,6 +46,9 @@ class Counter extends Component {
         const {value: count} = this.props.counter;
         return count === 0 ? 'Zero' : count;
     }
+    
+   
+    
 }
  
 export default Counter;

@@ -7,10 +7,10 @@ import React, { Component } from 'react';
 class App extends Component {
   state = { 
     counters: [
-        {id: 1, value: 0},
-        {id: 2, value: 0},
-        {id: 3, value: 0},
-        {id: 4, value: 0}
+        {id: 1, value: 0, values: []},
+        {id: 2, value: 0, values: []},
+        {id: 3, value: 0, values: []},
+        {id: 4, value: 0, values: []}
     ]
   }
 
@@ -19,6 +19,7 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = {...counter};
     counters[index].value++;
+    counters[index].values = [...counters[index].values, counters[index].value + ","]
     this.setState({ counters });
   }
 
@@ -27,12 +28,14 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = {...counter};
     counters[index].value--;
+    counters[index].values = [...counters[index].values, counters[index].value + ","]
     this.setState({ counters });
   }
 
   handleReset = () => {
     const counters = this.state.counters.map(c => {
         c.value = 0;
+        c.values = [];
         return c;
     });
     this.setState({ counters });
